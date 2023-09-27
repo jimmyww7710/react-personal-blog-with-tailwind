@@ -5,7 +5,7 @@ import FilterInput from './components/FilterInput';
 const articles = [
   {
     "title": "t01",
-    "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "summary": "test Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
   {
     "title": "t02",
@@ -30,22 +30,33 @@ const articles = [
 ];
 const App = () => {
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
+  const [filterList, setFilterList] = useState([]);
   useEffect(() => {
     setCurrentTabIndex(0);
+    setFilterList([...articles]);
   }, []);
   const handleCurrentTabIndex = (tabIndex) => {
     setCurrentTabIndex(tabIndex);
+
   };
+  const handleSetFilterValue = (value) => {
+    setFilterList(
+      articles.filter((item) => {
+        return item.title.toLowerCase().includes(value.toLowerCase()) ||
+          item.summary.toLowerCase().includes(value.toLowerCase())
+      }
+      ));
+  }
   return (
     <div>
       <PersonalInfo />
       <Tabs currentTabIndex={currentTabIndex} onChangeTabIndex={handleCurrentTabIndex} />
-      <FilterInput />
+      <FilterInput onInputChange={handleSetFilterValue} />
       <div className='wrapper'>
         {
           currentTabIndex == 0 && (
             <div className="grid grid-cols-4 gap-4">
-              {articles.map((element, index) => (
+              {filterList.map((element, index) => (
                 <div className="card card-compact bg-base-100 shadow-xl" key={index}>
                   <div className="card-body">
                     <h2 className="card-title">{element.title}</h2>
