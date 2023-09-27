@@ -11,7 +11,7 @@ const PersonalInfo = (prop) => {
                         <h1 className="text-2xl font-bold">Jimmy Wang  /  Frontend Developer</h1>
                         <ul className="py-6 ml-4">
                             <li className="list-disc">
-                                Experience in working project: Angularjs, Angular 2+, Angular Material UI, Vue2, Vue3, Vuetify, Node.js, Electron, HTML, CSS, SCSS, Canvas, JavaScript, TypeScript.
+                                Experience in working projects: Angularjs, Angular 2+, Angular Material UI, Vue2, Vue3, Vuetify, Node.js, Electron, HTML, CSS, SCSS, Canvas, JavaScript, TypeScript.
                             </li>
                             <li className="list-disc pt-4">
                                 Side Project experience: React.js, Next.js (CSR, SSR) <br />
