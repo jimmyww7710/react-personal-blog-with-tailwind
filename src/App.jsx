@@ -44,6 +44,7 @@ const App = () => {
   const ref = useRef(null);
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
   const [filterList, setFilterList] = useState([]);
+  const [inputValue, setInputValue] = useState('');
   useEffect(() => {
     setCurrentTabIndex(0);
     setFilterList(tabsData[0]);
@@ -51,11 +52,13 @@ const App = () => {
   const handleCurrentTabIndex = (tabIndex) => {
     setCurrentTabIndex(tabIndex);
     setFilterList(tabsData[tabIndex]);
+    setInputValue("");
   };
   const handleScrollButton = () => {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
   const handleSetFilterValue = (value) => {
+    setInputValue(value);
     setFilterList(
       tabsData[currentTabIndex].filter((item) => {
         const regexPattern = new RegExp(value.toLowerCase().split(/\s/).filter(item => item !== '').join('|'));
@@ -63,13 +66,14 @@ const App = () => {
       }
       ));
   }
+
   return (
     <div>
       <PersonalInfo onClickScrollButton={handleScrollButton} />
       <div ref={ref}>
         <Tabs currentTabIndex={currentTabIndex} onChangeTabIndex={handleCurrentTabIndex} onClickScrollButton={handleScrollButton} />
       </div>
-      <FilterInput onInputChange={handleSetFilterValue} />
+      <FilterInput inputValue={inputValue} onInputChange={handleSetFilterValue} />
       <div className='wrapper min-h-screen'>
         <div className={currentTabIndex === 0 ? "grid grid-cols-1 gap-4 sm:grid-cols-2" : "grid grid-cols-1 gap-4 sm:grid-cols-3"}>
           {filterList.map((element, index) => (
