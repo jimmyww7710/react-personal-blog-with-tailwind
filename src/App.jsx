@@ -83,7 +83,7 @@ const App = () => {
       <Tabs currentTabIndex={currentTabIndex} onChangeTabIndex={handleCurrentTabIndex} />
       <FilterInput onInputChange={handleSetFilterValue} />
       <div className='wrapper'>
-        <div className="grid grid-cols-4 gap-4">
+        <div className={currentTabIndex === 0 ? "grid grid-cols-1 gap-4 sm:grid-cols-2" : "grid grid-cols-1 gap-4 sm:grid-cols-3"}>
           {filterList.map((element, index) => (
             <div className="card card-compact bg-base-100 shadow-xl" key={index}>
               <div className="card-body">
