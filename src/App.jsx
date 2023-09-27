@@ -31,29 +31,20 @@ const tabsData = {
   ],
   1: [
     {
-      "title": "pt01",
-      "summary": "test Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "title": "Color Generator",
+      "summary": "a color generator using react.js.",
+      "link": "https://jwclrgenerator.netlify.app/"
     },
     {
-      "title": "t02",
-      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "title": "Cart",
+      "summary": "a cart application using React",
+      "link": "https://jwcart.netlify.app/"
     },
     {
-      "title": "t03",
-      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      "title": "Product Search Page",
+      "summary": "a product intro collection website that contains search functionality.",
+      "link": "https://jwfindproduct.netlify.app/"
     },
-    {
-      "title": "t04",
-      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    },
-    {
-      "title": "t05",
-      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    },
-    {
-      "title": "t06",
-      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    }
   ]
 }
 
@@ -96,7 +87,7 @@ const App = () => {
                 <h2 className="card-title">{element.title}</h2>
                 <p>{element.summary}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">read more</button>
+                  {element.link && <a href={element.link} target="_blank" rel="noreferrer"><button className="btn btn-primary">{currentTabIndex === 0 ? 'READ MORE' : 'SEE PAGE'}</button></a>}
                 </div>
               </div>
             </div>
