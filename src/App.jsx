@@ -34,7 +34,7 @@ const tabsData = {
     {
       "title": "portfolio",
       "summary": "My website that contains some previous works.",
-      "link": "https://jwfindproduct.netlify.app/"
+      "link": "https://jwworks.netlify.app/"
     },
   ]
 }
