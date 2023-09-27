@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PersonalInfo from "./components/PersonalInfo";
 import Tabs from "./components/Tabs";
 import FilterInput from './components/FilterInput';
@@ -59,6 +59,7 @@ const tabsData = {
 
 
 const App = () => {
+  const ref = useRef(null);
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
   const [filterList, setFilterList] = useState([]);
   useEffect(() => {
@@ -68,6 +69,9 @@ const App = () => {
   const handleCurrentTabIndex = (tabIndex) => {
     setCurrentTabIndex(tabIndex);
     setFilterList(tabsData[tabIndex]);
+  };
+  const handleScrollButton = () => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
   };
   const handleSetFilterValue = (value) => {
     setFilterList(
@@ -79,10 +83,12 @@ const App = () => {
   }
   return (
     <div>
-      <PersonalInfo />
-      <Tabs currentTabIndex={currentTabIndex} onChangeTabIndex={handleCurrentTabIndex} />
+      <PersonalInfo onClickScrollButton={handleScrollButton} />
+      <div ref={ref}>
+        <Tabs currentTabIndex={currentTabIndex} onChangeTabIndex={handleCurrentTabIndex} onClickScrollButton={handleScrollButton} />
+      </div>
       <FilterInput onInputChange={handleSetFilterValue} />
-      <div className='wrapper'>
+      <div className='wrapper min-h-screen'>
         <div className={currentTabIndex === 0 ? "grid grid-cols-1 gap-4 sm:grid-cols-2" : "grid grid-cols-1 gap-4 sm:grid-cols-3"}>
           {filterList.map((element, index) => (
             <div className="card card-compact bg-base-100 shadow-xl" key={index}>
