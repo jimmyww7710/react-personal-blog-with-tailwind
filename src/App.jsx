@@ -18,17 +18,22 @@ const tabsData = {
   1: [
     {
       "title": "Color Generator",
-      "summary": "a color generator using react.js.",
+      "summary": "A color generator using react.js.",
       "link": "https://jwclrgenerator.netlify.app/"
     },
     {
       "title": "Cart",
-      "summary": "a cart application using React",
+      "summary": "A cart application using React",
       "link": "https://jwcart.netlify.app/"
     },
     {
       "title": "Product Search Page",
-      "summary": "a product intro collection website that contains search functionality.",
+      "summary": "A product intro collection website that contains search functionality.",
+      "link": "https://jwfindproduct.netlify.app/"
+    },
+    {
+      "title": "portfolio",
+      "summary": "My website that contains some previous works.",
       "link": "https://jwfindproduct.netlify.app/"
     },
   ]

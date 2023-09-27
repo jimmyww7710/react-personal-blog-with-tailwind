@@ -1,4 +1,4 @@
-import img from '../assets/life_pic.jpg';
+import img from '../assets/life_pic_20230927.jpg';
 const PersonalInfo = (prop) => {
     const { onClickScrollButton } = prop;
     return (
