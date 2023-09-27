@@ -42,8 +42,8 @@ const App = () => {
   const handleSetFilterValue = (value) => {
     setFilterList(
       articles.filter((item) => {
-        return item.title.toLowerCase().includes(value.toLowerCase()) ||
-          item.summary.toLowerCase().includes(value.toLowerCase())
+        const regexPattern = new RegExp(value.toLowerCase().split(/\s/).filter(item => item !== '').join('|'));
+        return regexPattern.test(item.title.toLowerCase()) || regexPattern.test(item.summary.toLowerCase());
       }
       ));
   }
