@@ -8,7 +8,13 @@ const PersonalInfo = (prop) => {
                     <img src={img} className="max-w-xs rounded-sm shadow-2xl" />
                     <div className='w-32'></div>
                     <div>
-                        <h1 className="text-2xl font-bold">Jimmy Wang  /  Frontend Developer</h1>
+                        <div className='flex items-center justify-content-space-between gap-5'>
+                            <h1 className="text-2xl font-bold">Jimmy Wang  /  Frontend Developer</h1>
+                            <a href="https://www.linkedin.com/in/jimmyww9/overlay/contact-info/" target="_blank" rel="noreferrer">
+                                <button className="btn btn-neutral">Contact Info</button>
+                            </a>
+                        </div>
+
                         <ul className="py-6 ml-4">
                             <li className="list-disc">
                                 Experience in working projects: Angularjs, Angular 2+, Angular Material UI, Vue2, Vue3, Vuetify, Node.js, Electron, HTML, CSS, SCSS, Canvas, JavaScript, TypeScript.
@@ -24,8 +30,8 @@ const PersonalInfo = (prop) => {
                         <button className="btn btn-primary" onClick={onClickScrollButton}>view works</button>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 

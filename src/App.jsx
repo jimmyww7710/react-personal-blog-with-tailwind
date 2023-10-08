@@ -2,17 +2,20 @@ import { useState, useEffect, useRef } from 'react';
 import PersonalInfo from "./components/PersonalInfo";
 import Tabs from "./components/Tabs";
 import FilterInput from './components/FilterInput';
+// import axios from './axios';
 const tabsData = {
   0: [
     {
       "title": "意料之外的結果-不是加了closing-tag-包住就真的被包住",
       "summary": "某些tag其實並不能在裡面放同樣的tag",
-      "link": "https://medium.com/@jimmyww7710/撰寫html-意料之外的結果-不是加了closing-tag-包住就真的被包住-8449cc09ff25"
+      "link": "https://medium.com/@jimmyww7710/撰寫html-意料之外的結果-不是加了closing-tag-包住就真的被包住-8449cc09ff25",
+      "tags": ['html']
     },
     {
       "title": "結構化css文字大小設定",
       "summary": "透過相對單位可以更快速地定義大小且根據HTML內容的結構，產生對應關係",
-      "link": "https://medium.com/@jimmyww7710/結構化css文字大小設定-637e632def48"
+      "link": "https://medium.com/@jimmyww7710/結構化css文字大小設定-637e632def48",
+      "tags": ['css']
     }
   ],
   1: [
@@ -75,12 +78,18 @@ const App = () => {
       </div>
       <FilterInput inputValue={inputValue} onInputChange={handleSetFilterValue} />
       <div className='wrapper min-h-screen'>
-        <div className={currentTabIndex === 0 ? "grid grid-cols-1 gap-4 sm:grid-cols-2" : "grid grid-cols-1 gap-4 sm:grid-cols-3"}>
+        <div className={`grid grid-cols-1 gap-4 sm:grid-cols-${currentTabIndex === 0 ? 2 : 3}`}>
           {filterList.map((element, index) => (
             <div className="card card-compact bg-base-100 shadow-xl" key={index}>
               <div className="card-body">
                 <h2 className="card-title">{element.title}</h2>
                 <p>{element.summary}</p>
+                {element.tags && element.tags.map((item, i) => (
+                  <div key={i} className='mt-5'>
+                    {item == 'html' && <div className="badge badge-outline">html</div>}
+                    {item == 'css' && <div className={`badge badge-outline badge-${item == 'css' ? 'secondary' : 'urgent'}`}>{item}</div>}
+                  </div>
+                ))}
                 <div className="card-actions justify-end">
                   {element.link && <a href={element.link} target="_blank" rel="noreferrer"><button className="btn btn-primary">{currentTabIndex === 0 ? 'READ MORE' : 'SEE PAGE'}</button></a>}
                 </div>
