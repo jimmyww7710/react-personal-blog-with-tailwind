@@ -15,7 +15,7 @@ const tabsData = {
       "title": "結構化css文字大小設定",
       "summary": "透過相對單位可以更快速地定義大小且根據HTML內容的結構，產生對應關係",
       "link": "https://medium.com/@jimmyww7710/結構化css文字大小設定-637e632def48",
-      "tags": ['css']
+      "tags": ['css', 'html']
     }
   ],
   1: [
@@ -65,9 +65,11 @@ const App = () => {
     setFilterList(
       tabsData[currentTabIndex].filter((item) => {
         const regexPattern = new RegExp(value.toLowerCase().split(/\s/).filter(item => item !== '').join('|'));
-        return regexPattern.test(item.title.toLowerCase()) || regexPattern.test(item.summary.toLowerCase());
+        return regexPattern.test(item.title.toLowerCase()) || regexPattern.test(item.summary.toLowerCase()) || item.tags && regexPattern.test(item.tags.join().toLowerCase());
       }
       ));
+
+    console.log(tabsData[currentTabIndex], filterList);
   }
 
   return (
@@ -78,18 +80,20 @@ const App = () => {
       </div>
       <FilterInput inputValue={inputValue} onInputChange={handleSetFilterValue} />
       <div className='wrapper min-h-screen'>
-        <div className={`grid grid-cols-1 gap-4 sm:grid-cols-${currentTabIndex === 0 ? 2 : 3}`}>
+        <div className={`grid grid-cols-1 gap-4 ${currentTabIndex === 0 ? 'sm:grid-cols-2' : 'sm:grid-cols-3'}`}>
           {filterList.map((element, index) => (
             <div className="card card-compact bg-base-100 shadow-xl" key={index}>
               <div className="card-body">
                 <h2 className="card-title">{element.title}</h2>
                 <p>{element.summary}</p>
-                {element.tags && element.tags.map((item, i) => (
-                  <div key={i} className='mt-5'>
-                    {item == 'html' && <div className="badge badge-outline">html</div>}
-                    {item == 'css' && <div className={`badge badge-outline badge-${item == 'css' ? 'secondary' : 'urgent'}`}>{item}</div>}
-                  </div>
-                ))}
+                <div className='flex justify-content-space-between gap-2'>
+                  {element.tags && element.tags.map((item, i) => (
+                    <div key={i} className='mt-5'>
+                      {item == 'html' && <div className="badge badge-outline">html</div>}
+                      {item == 'css' && <div className={`badge badge-outline badge-${item == 'css' ? 'secondary' : 'urgent'}`}>{item}</div>}
+                    </div>
+                  ))}
+                </div>
                 <div className="card-actions justify-end">
                   {element.link && <a href={element.link} target="_blank" rel="noreferrer"><button className="btn btn-primary">{currentTabIndex === 0 ? 'READ MORE' : 'SEE PAGE'}</button></a>}
                 </div>

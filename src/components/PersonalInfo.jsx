@@ -1,4 +1,5 @@
 import img from '../assets/life_pic_20230927.jpg';
+import { AiFillLinkedin, AiOutlineMail } from 'react-icons/ai';
 const PersonalInfo = (prop) => {
     const { onClickScrollButton } = prop;
     return (
@@ -10,9 +11,30 @@ const PersonalInfo = (prop) => {
                     <div>
                         <div className='flex items-center justify-content-space-between gap-5'>
                             <h1 className="text-2xl font-bold">Jimmy Wang  /  Frontend Developer</h1>
-                            <a href="https://www.linkedin.com/in/jimmyww9/overlay/contact-info/" target="_blank" rel="noreferrer">
-                                <button className="btn btn-neutral">Contact Info</button>
-                            </a>
+                            <button className="btn btn-neutral" onClick={() => document.getElementById('contact-info').showModal()}>Contact Info</button>
+                            <dialog id="contact-info" className="modal">
+                                <div className="modal-box">
+                                    <ul>
+                                        {
+                                            [
+                                                "profile",
+                                                "email"
+                                            ].map((info, i) => (
+                                                <li key={i} className='mt-5'>
+                                                    {info == "profile" && (<a href='https://linkedin.com/in/jimmyww9' target="_blank" rel="noreferrer" className="flex items-center justify-content-space-between gap-5"><AiFillLinkedin size={24} /> <p>linkedin.com/in/jimmyww9</p></a>)}
+                                                    {info == "email" && (<a href='mailto:https://jimmyww7710@gmail.com' className="flex items-center justify-content-space-between gap-5"><AiOutlineMail size={24} /><p>jimmyww7710@gmail.com</p></a>)}
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
+                                    <div className="modal-action">
+                                        <form method="dialog">
+                                            {/* if there is a button in form, it will close the modal */}
+                                            <button className="btn">Close</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </dialog>
                         </div>
 
                         <ul className="py-6 ml-4">
