@@ -34,6 +34,9 @@ const PersonalInfo = (prop) => {
                                         </form>
                                     </div>
                                 </div>
+                                <form method="dialog" className="modal-backdrop">
+                                    <button>Close</button>
+                                </form>
                             </dialog>
                         </div>
 
