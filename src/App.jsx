@@ -17,6 +17,12 @@ const tabsData = {
       "summary": "透過相對單位可以更快速地定義大小且根據HTML內容的結構，產生對應關係",
       "link": "https://medium.com/@jimmyww7710/結構化css文字大小設定-637e632def48",
       "tags": ['css', 'html']
+    },
+    {
+      "title": "Compare 3 html structures to see how margin-top works out in result",
+      "summary": "if you compare these different html structures below, you could see set margin-top gives you special result.",
+      "link": "https://jimmyww7710.medium.com/compare-3-html-structures-to-see-how-margin-top-works-out-in-result-2e1e09f0c4a7",
+      "tags": ['css', 'html']
     }
   ],
   1: [
@@ -76,8 +82,6 @@ const App = () => {
         return regexPattern.test(item.title.toLowerCase()) || regexPattern.test(item.summary.toLowerCase()) || item.tags && regexPattern.test(item.tags.join().toLowerCase());
       }
       ));
-
-    console.log(tabsData[currentTabIndex], filterList);
   }
 
   return (
