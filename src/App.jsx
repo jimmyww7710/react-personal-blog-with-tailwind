@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import PersonalInfo from "./components/PersonalInfo";
 import Tabs from "./components/Tabs";
 import FilterInput from './components/FilterInput';
+import { BiSun, BiMoon } from "react-icons/bi";
 // import axios from './axios';
 const tabsData = {
   0: [
@@ -48,10 +49,17 @@ const App = () => {
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
   const [filterList, setFilterList] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const [darkTheme, setDarkTheme] = useState(false);
   useEffect(() => {
     setCurrentTabIndex(0);
     setFilterList(tabsData[0]);
   }, []);
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', (darkTheme ? 'dracula' : 'cupcake'));
+  }, [darkTheme])
+  const handleCurrentTheme = () => {
+    setDarkTheme(!darkTheme);
+  };
   const handleCurrentTabIndex = (tabIndex) => {
     setCurrentTabIndex(tabIndex);
     setFilterList(tabsData[tabIndex]);
@@ -74,7 +82,14 @@ const App = () => {
 
   return (
     <div>
-      <PersonalInfo onClickScrollButton={handleScrollButton} />
+      <section className="bg-base-200">
+        <div className="static justify-end pt-5 pr-5 md:absolute md:pt-0 md:pr-0 top-5 right-5 z-20 flex items-center justify-content-space-between gap-2">
+          {darkTheme ? <BiMoon /> : <BiSun />}
+          <input type="checkbox" className='toggle toggle-sm md:toggle-md' checked={darkTheme ? true : false} onChange={handleCurrentTheme} />
+        </div>
+        <PersonalInfo onClickScrollButton={handleScrollButton} />
+      </section>
+
       <div ref={ref}>
         <Tabs currentTabIndex={currentTabIndex} onChangeTabIndex={handleCurrentTabIndex} onClickScrollButton={handleScrollButton} />
       </div>

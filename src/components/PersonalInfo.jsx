@@ -4,7 +4,7 @@ const PersonalInfo = (prop) => {
     const { onClickScrollButton } = prop;
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row">
                     <img src={img} className="max-w-xs rounded-sm shadow-2xl" />
                     <div className='w-32'></div>
