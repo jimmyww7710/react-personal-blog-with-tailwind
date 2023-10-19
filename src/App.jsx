@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import PersonalInfo from "./components/PersonalInfo";
 import Tabs from "./components/Tabs";
 import FilterInput from './components/FilterInput';
+import Badge from './components/Badge';
 import { BiSun, BiMoon } from "react-icons/bi";
 // import axios from './axios';
 const tabsData = {
@@ -118,8 +119,7 @@ const App = () => {
                 <div className='flex justify-content-space-between gap-2'>
                   {element.tags && element.tags.map((item, i) => (
                     <div key={i} className='mt-5'>
-                      {item == 'html' && <div className="badge badge-outline">html</div>}
-                      {item != 'html' && <div className={`badge badge-outline badge-${item == 'css' ? 'primary' : 'secondary'}`}>{item}</div>}
+                      {item && <Badge text={item} />}
                     </div>
                   ))}
                 </div>
