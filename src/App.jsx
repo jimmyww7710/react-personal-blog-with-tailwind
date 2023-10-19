@@ -23,28 +23,38 @@ const tabsData = {
       "summary": "if you compare these different html structures below, you could see set margin-top gives you special result.",
       "link": "https://jimmyww7710.medium.com/compare-3-html-structures-to-see-how-margin-top-works-out-in-result-2e1e09f0c4a7",
       "tags": ['css', 'html']
+    },
+    {
+      "title": "[Angular] Sharing data across components",
+      "summary": "In this article, Let’s talk about two important concept from 'rxjs': Subject and Observable.",
+      "link": "https://jimmyww7710.medium.com/angular-shareing-data-cross-components-1ddd5dcc47c2",
+      "tags": ['angular', 'rxjs']
     }
   ],
   1: [
     {
       "title": "Color Generator",
       "summary": "A color generator using react.js.",
-      "link": "https://jwclrgenerator.netlify.app/"
+      "link": "https://jwclrgenerator.netlify.app/",
+      "tags": ['react']
     },
     {
       "title": "Cart",
       "summary": "A cart application using React",
-      "link": "https://jwcart.netlify.app/"
+      "link": "https://jwcart.netlify.app/",
+      "tags": ['react']
     },
     {
       "title": "Product Search Page",
       "summary": "A product intro collection website that contains search functionality.",
-      "link": "https://jwfindproduct.netlify.app/"
+      "link": "https://jwfindproduct.netlify.app/",
+      "tags": ['react']
     },
     {
       "title": "portfolio",
       "summary": "My website that contains some previous works.",
-      "link": "https://jwworks.netlify.app/"
+      "link": "https://jwworks.netlify.app/",
+      "tags": ['react']
     },
   ]
 }
@@ -109,7 +119,7 @@ const App = () => {
                   {element.tags && element.tags.map((item, i) => (
                     <div key={i} className='mt-5'>
                       {item == 'html' && <div className="badge badge-outline">html</div>}
-                      {item == 'css' && <div className={`badge badge-outline badge-${item == 'css' ? 'secondary' : 'urgent'}`}>{item}</div>}
+                      {item != 'html' && <div className={`badge badge-outline badge-${item == 'css' ? 'primary' : 'secondary'}`}>{item}</div>}
                     </div>
                   ))}
                 </div>
