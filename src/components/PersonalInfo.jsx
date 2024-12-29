@@ -1,10 +1,11 @@
 import img from '../assets/myself.png';
+import bgImg from '../assets/Designer.jpeg';
 import { AiFillLinkedin, AiOutlineMail } from 'react-icons/ai';
 const PersonalInfo = (prop) => {
     const { onClickScrollButton } = prop;
     const bg = {
         background: `linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 200%), 
-        url('/src/assets/Designer.jpeg')`,
+        url('${bgImg}')`,
         backgroundSize: `cover`,
         backgroundPosition: `center`
     }
