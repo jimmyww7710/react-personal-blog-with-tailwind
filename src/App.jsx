@@ -71,9 +71,9 @@ const App = () => {
     setCurrentTabIndex(0);
     setFilterList(tabsData[0]);
   }, []);
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', (darkTheme ? 'dracula' : 'cupcake'));
-  }, [darkTheme])
+  // useEffect(() => {
+  //   document.documentElement.setAttribute('data-theme', (darkTheme ? 'dracula' : 'cupcake'));
+  // }, [darkTheme])
   const handleCurrentTheme = () => {
     setDarkTheme(!darkTheme);
   };
@@ -97,15 +97,15 @@ const App = () => {
 
   return (
     <div>
-      <section className="bg-base-200">
-        <div className="static justify-end pt-5 pr-5 md:absolute md:pt-0 md:pr-0 top-5 right-5 z-20 flex items-center justify-content-space-between gap-2">
+      <section>
+        {/* <div className="static justify-end pt-5 pr-5 md:absolute md:pt-0 md:pr-0 top-5 right-5 z-20 flex items-center justify-content-space-between gap-2">
           {darkTheme ? <BiMoon /> : <BiSun />}
           <input type="checkbox" className='toggle toggle-sm md:toggle-md' checked={darkTheme ? true : false} onChange={handleCurrentTheme} />
-        </div>
+        </div> */}
         <PersonalInfo onClickScrollButton={handleScrollButton} />
       </section>
 
-      <div ref={ref}>
+      <div ref={ref} className="mb-5">
         <Tabs currentTabIndex={currentTabIndex} onChangeTabIndex={handleCurrentTabIndex} onClickScrollButton={handleScrollButton} />
       </div>
       <FilterInput inputValue={inputValue} onInputChange={handleSetFilterValue} />
@@ -124,7 +124,7 @@ const App = () => {
                   ))}
                 </div>
                 <div className="card-actions justify-end">
-                  {element.link && <a href={element.link} target="_blank" rel="noreferrer"><button className="btn btn-primary">{currentTabIndex === 0 ? 'READ MORE' : 'SEE PAGE'}</button></a>}
+                  {element.link && <a href={element.link} target="_blank" rel="noreferrer"><button className="btn btn-neutral">{currentTabIndex === 0 ? 'READ MORE' : 'SEE PAGE'}</button></a>}
                 </div>
               </div>
             </div>
